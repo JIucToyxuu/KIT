@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_filter :signed_in_user, 
-                only: [:index, :edit, :update, :destroy, :following, :followers]
+                only: [:index, :edit, :update, :destroy, :following, :followers, :addjob]
   before_filter :correct_user,   only: [:edit, :update]
   before_filter :admin_user,     only: :destroy
 
@@ -26,6 +26,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    session[:domain_id] = params[:id]
   	@user = User.find(params[:id])
     @microposts = @user.microposts.paginate(page: params[:page])
   end
@@ -60,6 +61,19 @@ class UsersController < ApplicationController
     @users = @user.followers.paginate(page: params[:page])
     render 'show_follow'
   end
+
+  def jobss     
+    @user = User.find(params[:id])   
+    @jobs = @user.jobs.paginate(page: params[:page])
+    if signed_in?
+      @job =current_user.jobs.build
+      @job.active = true
+      @jobs_items = current_user.jobs.paginate(page: params[:page])
+    end
+  end
+
+
+
   
 
   private

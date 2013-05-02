@@ -11,8 +11,12 @@ class StaticPagesController < ApplicationController
   end
 
   def about
+    @user = User.find(session[:domain_id])
+    @jobs_items = @user.jobs.paginate(page: params[:page])
   end
 
   def contact
   end
+
+  
 end

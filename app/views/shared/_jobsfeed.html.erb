@@ -1,18 +1,11 @@
-<div class="row">
-  <aside class="span4">
-    <section>
-      <h1>
-        <%= gravatar_for @user %>
-        <%= @user.name %>
-      </h1>
-    </section>
-  </aside>
-  <div class="span8">
-	  <h3>Места работы (<%= @user.jobs.count %>)</h3>
-    	 <% @jobs_items.each do |jobs_item| %>
+ <% if @jobs_items.any? %>
+  <ol class="microposts">
+  	<h3>Места работы (<%= @user.jobs.count %>)</h3>
+    <% @jobs_items.each do |jobs_item| %>
 
-    
-      	 <% if jobs_item.active == true %>
+    <div class="row" >
+      <div class="span8">
+      	<% if jobs_item.active == true %>
       		<li style="background-color: #00FF7F; border-radius: 10px;">
       	 	  <section style="margin-top: 1em; margin-left: 2em">
         		<p> Компания: <%= jobs_item.namecompany %></p> 
@@ -25,6 +18,7 @@
         	 	Уволен        
         		<% end %>
     			</p>
+    			<p> Кнопка удаления!!!!     ----- Кнопка редактирования!!!!!</p>
     	 	  </section>
     		</li>
     	<% else %>
@@ -40,9 +34,12 @@
         	 	Уволен        
         		<% end %>
     			</p>
+    			<p> Кнопка удаления!!!!     ----- Кнопка редактирования!!!!!</p>
     	 	  </section>
     		</li>
-    	<% end %>  
-      <% end %>   	
-  </div>
-</div>
+    	<% end %>     	
+      </div>
+    </div>
+    <% end %>
+  </ol>
+<% end %>

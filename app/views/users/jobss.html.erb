@@ -5,15 +5,11 @@
         <%= render 'shared/user_info' %>
       </section>
       <section>
-        <%= render 'shared/stats' %>
-      </section>
-      <section>
-        <%= render 'shared/micropost_form' %>
+        <%= render 'shared/job_form' %>
       </section>
     </aside>
     <div class="span8">
-      <h3>Micropost Feed</h3>
-      <%= render 'shared/feed' %>
+      <%= render 'shared/jobsfeed' %>
     </div>
   </div>
 <% else %>
@@ -21,10 +17,10 @@
     <h1>Keep In Touch</h1>
 
     <h2>
-      Социальная сеть для выпускников ЮРГТУ(НПИ)
+      Социальная сеть для студентов ЮРГТУ(НПИ)
     </h2>
 
-    <%= link_to "Присоединяйся!", signup_path,
+    <%= link_to "Зарегестрироваться сейчас!", signup_path,
                                 class: "btn btn-large btn-primary" %>
   </div>
 

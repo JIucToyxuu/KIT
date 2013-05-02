@@ -1,0 +1,10 @@
+<%= form_for(@job) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="field">
+    <%= f.text_area :namecompany, placeholder: "Компания" %>
+    <%= f.text_area :address, placeholder: "Адрес" %>
+    <%= f.text_area :post, placeholder: "Должность" %>
+    <% f.object.active = true %>
+  </div>
+  <%= f.submit "Добавить", class: "btn btn-large btn-primary" %>
+<% end %>
