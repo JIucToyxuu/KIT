@@ -1,19 +1,15 @@
 # == Schema Information
 #
-# Table name: jobs
+# Table name: faculties
 #
 #  id          :integer          not null, primary key
-#  namecompany :string(255)
-#  address     :string(255)
-#  post        :string(255)
-#  active      :boolean
-#  user_id     :integer
+#  namefaculty :string(255)
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
 
 require 'spec_helper'
 
-describe Job do
+describe Faculty do
   pending "add some examples to (or delete) #{__FILE__}"
 end

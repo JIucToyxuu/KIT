@@ -1,0 +1,25 @@
+ <div class="row">
+    <aside class="span4">
+      <section>
+	     <%= form_for(@chair) do |f| %>
+       		<%= render 'shared/error_messages', object: f.object %>
+        <div class="field">
+          <%= f.label "Добавление кафедры в БД" %>
+          <%= f.text_field :namechair, placeholder: "Наименование кафедры..." %>
+
+          <%= f.label "Факультет" %>
+          <%= f.collection_select(:faculty_id, Faculty.all, :id, :namefaculty, :include_blank => true) %>
+        </div>
+          <%= f.submit "Добавить", class: "btn btn-large btn-primary" %>
+       <% end %>
+      </section>
+    </aside>
+    <div class="span8">
+      <h3>Список кафедр</h3>
+        <ol class="microposts">
+        <%= render partial: 'shared/chair_item',
+                   collection: @chair_items %>
+        </ol>
+        <%= will_paginate @chair_items %>
+    </div>
+  </div>

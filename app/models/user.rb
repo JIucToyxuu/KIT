@@ -2,15 +2,25 @@
 #
 # Table name: users
 #
-#  id         :integer          not null, primary key
-#  name       :string(255)
-#  email      :string(255)
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id              :integer          not null, primary key
+#  name            :string(255)
+#  email           :string(255)
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  password_digest :string(255)
+#  remember_token  :string(255)
+#  admin           :boolean          default(FALSE)
+#  family_name     :string(255)
+#  patronymic      :string(255)
+#  faculty         :string(255)
+#  chair           :string(255)
+#  branch          :string(255)
+#  year_off        :integer
 #
 
 class User < ActiveRecord::Base
-  attr_accessible :email, :name, :password, :password_confirmation
+  attr_accessible :email, :name, :password, :password_confirmation, 
+          :family_name, :patronymic, :faculty, :chair, :branch, :year_off
   has_secure_password
 
   has_many :microposts, dependent: :destroy
@@ -33,7 +43,12 @@ class User < ActiveRecord::Base
 			uniqueness: { case_sensitive: false }  
   validates :password, presence: true, length: { minimum: 6 }
   validates :password_confirmation, presence: true
-
+  validates :family_name, presence: true
+  validates :patronymic, presence: true
+  validates :faculty, presence: true
+  validates :chair, presence: true
+  validates :branch, presence: true
+  validates :year_off, presence: true
 
   def feed
     Micropost.from_users_followed_by(self)

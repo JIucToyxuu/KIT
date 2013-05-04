@@ -11,7 +11,27 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130502040256) do
+ActiveRecord::Schema.define(:version => 20130504091042) do
+
+  create_table "branches", :force => true do |t|
+    t.string   "namebranch"
+    t.integer  "chair_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "chairs", :force => true do |t|
+    t.string   "namechair"
+    t.integer  "faculty_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "faculties", :force => true do |t|
+    t.string   "namefaculty"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "jobs", :force => true do |t|
     t.string   "namecompany"
@@ -53,6 +73,12 @@ ActiveRecord::Schema.define(:version => 20130502040256) do
     t.string   "password_digest"
     t.string   "remember_token"
     t.boolean  "admin",           :default => false
+    t.string   "family_name"
+    t.string   "patronymic"
+    t.string   "faculty"
+    t.string   "chair"
+    t.string   "branch"
+    t.integer  "year_off"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

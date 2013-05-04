@@ -2,11 +2,20 @@
 #
 # Table name: users
 #
-#  id         :integer          not null, primary key
-#  name       :string(255)
-#  email      :string(255)
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id              :integer          not null, primary key
+#  name            :string(255)
+#  email           :string(255)
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  password_digest :string(255)
+#  remember_token  :string(255)
+#  admin           :boolean          default(FALSE)
+#  family_name     :string(255)
+#  patronymic      :string(255)
+#  faculty         :string(255)
+#  chair           :string(255)
+#  branch          :string(255)
+#  year_off        :integer
 #
 
 require 'spec_helper'

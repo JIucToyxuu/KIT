@@ -1,0 +1,7 @@
+<%= form_for(@faculty) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="field">
+    <%= f.text_area :namefaculty, placeholder: "Наименование факультета..." %>
+  </div>
+  <%= f.submit "Создать", class: "btn btn-large btn-primary" %>
+<% end %>

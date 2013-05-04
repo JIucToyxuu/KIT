@@ -16,6 +16,9 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params[:user])
+    @branch = Branch.find_by_namebranch(@user.branch)
+    @user.chair = @branch.chair.namechair
+    @user.faculty = @branch.chair.faculty.namefaculty
     if @user.save
       sign_in @user
       flash[:success] = "Welcome to the KIT!"

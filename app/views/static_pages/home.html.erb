@@ -17,16 +17,5 @@
     </div>
   </div>
 <% else %>
-  <div class="center hero-unit">
-    <h1>Keep In Touch</h1>
-
-    <h2>
-      Социальная сеть для выпускников ЮРГТУ(НПИ)
-    </h2>
-
-    <%= link_to "Присоединяйся!", signup_path,
-                                class: "btn btn-large btn-primary" %>
-  </div>
-
-  
+ 	<%= render 'shared/unregistered' %>  
 <% end %>

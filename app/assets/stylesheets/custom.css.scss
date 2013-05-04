@@ -189,6 +189,10 @@ input {
   height: auto !important;
 }
 
+select {
+  height: auto !important;
+}
+
 #error_explanation {
   color: #f00;
   ul {
@@ -226,6 +230,10 @@ input {
   li {
     padding: 10px 0;
     border-top: 1px solid #e8e8e8;
+  }
+  red {
+    color: darkseagreen;
+    font-size: 150%;
   }
 }
 .content {
