@@ -3,7 +3,9 @@
     <section>
       <h1>
         <%= gravatar_for @user %>
-        <%= @user.name %>
+        <%= @user.family_name %>
+        <%= @user.name %> <br />
+        <%= @user.patronymic %>
       </h1>
     </section>
   </aside>

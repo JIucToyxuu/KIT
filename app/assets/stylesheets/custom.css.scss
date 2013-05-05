@@ -9,6 +9,10 @@ html {
 
 body {
   padding-top: 60px;
+  red {
+    color: darkseagreen;
+    font-size: 150%;
+  }
 }
 
 section {
@@ -231,10 +235,7 @@ select {
     padding: 10px 0;
     border-top: 1px solid #e8e8e8;
   }
-  red {
-    color: darkseagreen;
-    font-size: 150%;
-  }
+  
 }
 .content {
   display: block;
