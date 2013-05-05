@@ -8,6 +8,12 @@
         <%= @user.patronymic %>
       </h1>
     </section>
+     <section>
+      <pre><br />    Факультет:      <red><%= @user.faculty %></red><br />
+    Кафедра:        <red><%= @user.chair %></red><br />
+    Специальность:  <red><%= @user.branch %></red><br />
+    Год выпуска:    <red><%= @user.year_off %></red></pre>
+    </section>
   </aside>
   <div class="span8">
 	  <h3>Места работы (<%= @user.jobs.count %>)</h3>

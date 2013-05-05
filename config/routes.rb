@@ -9,7 +9,7 @@ KIT::Application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :microposts, only: [:create, :destroy]
   resources :relationships, only: [:create, :destroy]
-  resources :jobs, only: [:create, :destroy, :edit]
+  resources :jobs, only: [:create, :destroy, :edit, :update]
   resources :faculties, only: [:create, :destroy, :new]
   resources :chairs, only: [:create, :destroy, :new]
   resources :branches, only: [:create, :destroy, :new]

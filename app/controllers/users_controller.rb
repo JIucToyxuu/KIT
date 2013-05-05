@@ -78,6 +78,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def delete_job
+    Job.find(params[:id]).destroy
+    flash[:success] = "Job destroyed."
+    redirect_to jobss_user_path(current_user)
+  end
+
 
 
    

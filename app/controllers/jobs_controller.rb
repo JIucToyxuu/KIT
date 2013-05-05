@@ -9,7 +9,19 @@ class JobsController < ApplicationController
     
   end
 
+  def update
+    @job = Job.find(params[:id])
+    @job.active = false;
+    @job.update_attributes(params[:user])
+    flash[:success] = "Profile updated"
+    redirect_to jobss_user_path(current_user)    
+  end
+
   def destroy
+    @user = User.find(params[:id])
+    Job.find(params[:id]).destroy
+    flash[:success] = "Job destroyed."
+    redirect_to jobss_user_path(current_user)
   end
 
   def create

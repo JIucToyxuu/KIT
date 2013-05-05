@@ -6,7 +6,6 @@
   	| <%= link_to "Сделать администратором", user , :action => "toadmin",
                                   data: { confirm: "You sure?" } %>
     <% end %>
-    | <%= link_to "Удалить", user, method: :delete,
-                                  data: { confirm: "You sure?" } %>
+    | <%= link_to "Удалить", user, method: :delete, :job => :destroy, data: { confirm: "You sure?" } %>
   <% end %>
 </li>

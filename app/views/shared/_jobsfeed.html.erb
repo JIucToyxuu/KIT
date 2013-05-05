@@ -6,23 +6,10 @@
     <div class="row" >
       <div class="span8">
       	<% if jobs_item.active == true %>
-      		<li style="background-color: #00FF7F; border-radius: 10px;">
-      	 	  <section style="margin-top: 1em; margin-left: 2em">
-        		<p> Компания: <%= jobs_item.namecompany %></p> 
-        		<p> Адрес:  <%= jobs_item.address %> </p> 
-        		<p> Должность: <%= jobs_item.post %> 
-        		<p> Статус: 
-        		<% if jobs_item.active == true %>
-        	 	Работаю 
-        		<% else %>
-        	 	Уволен        
-        		<% end %>
-    			</p>
-    			<p> Кнопка удаления!!!!     ----- Кнопка редактирования!!!!!</p>
-    	 	  </section>
-    		</li>
+      		<li style="background-color: #00FF7F; border-radius: 10px;">      	 	  
     	<% else %>
     		<li style="background-color: #FA8072; border-radius: 10px;">
+      <% end %>
       	 	  <section style="margin-top: 1em; margin-left: 2em">
         		<p> Компания: <%= jobs_item.namecompany %></p> 
         		<p> Адрес:  <%= jobs_item.address %> </p> 
@@ -34,10 +21,15 @@
         	 	Уволен        
         		<% end %>
     			</p>
-    			<p> Кнопка удаления!!!!     ----- Кнопка редактирования!!!!!</p>
+    			<p>  <%= link_to "Удалить", jobs_item, method: :delete,
+                                  data: { confirm: "You sure?" } %>
+              <% if jobs_item.active == true %>
+              или  <%= link_to "Уволится", jobs_item, method: :put,
+                                  data: { confirm: "You sure?" } %>
+              <% end %>
+          </p>
     	 	  </section>
-    		</li>
-    	<% end %>     	
+    		</li>     	
       </div>
     </div>
     <% end %>
