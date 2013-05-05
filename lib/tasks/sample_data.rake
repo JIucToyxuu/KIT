@@ -2,69 +2,19 @@ namespace :db do
   desc "Fill database with sample data"
   task populate: :environment do
     make_users
-    make_microposts
-    make_relationships
   end
 end
 
 def make_users
-  admin = User.create!(name:     "Example User",
-                       email:    "example1@railstutorial.org",
-                       password: "foobar",
-                       password_confirmation: "foobar",
-                       family_name: "string",
-                       patronymic: "string",
-                       faculty: "string",
-                       chair: "string",
-                       branch: "string",
+  admin = User.create!(name:     "Admin",
+                       email:    "admin@admin.ru",
+                       password: "123456",
+                       password_confirmation: "123456",
+                       family_name: "_",
+                       patronymic: "_",
+                       faculty: "nill",
+                       chair: "nill",
+                       branch: "nill",
                        year_off: 2013)
   admin.toggle!(:admin)
-  User.create!(name:     "ivan",
-                       email:    "example@railstutorial.org",
-                       password: "foobar",
-                       password_confirmation: "foobar",
-                       family_name: "string",
-                       patronymic: "string",
-                       faculty: "string",
-                       chair: "string",
-                       branch: "string",
-                       year_off: 2013)
-  10.times do |n|
-    name  = Faker::Name.name
-    email = "example-#{n+1}@railstutorial.org"
-    password  = "password"
-                       family_name = "string"
-                       patronymic = "string"
-                       faculty = "string"
-                       chair = "string"
-                       branch = "string"
-                       year_off = 2013
-    User.create!(name:     name,
-                 email:    email,
-                 password: password,
-                 password_confirmation: password,
-                 family_name: family_name,
-                 patronymic: patronymic,
-                 faculty: faculty,
-                 chair: chair,
-                 branch: branch,
-                 year_off: year_off)
-  end
-end
-
-def make_microposts
-  users = User.all(limit: 6)
-  10.times do
-    content = Faker::Lorem.sentence(5)
-    users.each { |user| user.microposts.create!(content: content) }
-  end
-end
-
-def make_relationships
-  users = User.all
-  user  = users.first
-  followed_users = users[2..5]
-  followers      = users[3..4]
-  followed_users.each { |followed| user.follow!(followed) }
-  followers.each      { |follower| follower.follow!(user) }
 end
