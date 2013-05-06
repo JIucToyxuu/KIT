@@ -1,7 +1,5 @@
 KIT::Application.routes.draw do
 
-  get "password_resets/new"
-
   resources :users do
     member do
       get :following, :followers, :jobss
