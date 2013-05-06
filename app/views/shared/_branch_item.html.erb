@@ -1,7 +1,7 @@
 <li id="<%= branch_item.id %>">
     
-    <span class="namebranch"> Специальность: <red><%= branch_item.namebranch %></red> &nbsp; => &nbsp; </span>
-    <span class="namechair"> Кафедра: <red><%= branch_item.chair.namechair %></red> &nbsp; => &nbsp; </span>
+    <span class="namebranch"> Специальность: <red><%= branch_item.namebranch %></red> &nbsp; <= &nbsp; </span>
+    <span class="namechair"> Кафедра: <red><%= branch_item.chair.namechair %></red> &nbsp; <= &nbsp; </span>
     <span class="facultychair"> Факультет:  <red> <%= branch_item.chair.faculty.namefaculty %></red></span>
     <span class="timestamp"><br />
       Create <%= time_ago_in_words(branch_item.created_at) %> ago.

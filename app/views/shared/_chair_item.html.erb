@@ -1,6 +1,6 @@
 <li id="<%= chair_item.id %>">
     
-    <span class="namechair"> Кафедра: <red><%= chair_item.namechair %></red></span> &nbsp; => &nbsp; 
+    <span class="namechair"> Кафедра: <red><%= chair_item.namechair %></red></span> &nbsp; <= &nbsp; 
     <span class="facultychair"> Факультет:  <red><%= chair_item.faculty.namefaculty %></red></span>
     <span class="timestamp"><br />
       Create <%= time_ago_in_words(chair_item.created_at) %> ago.

@@ -1,5 +1,7 @@
 KIT::Application.routes.draw do
 
+  get "password_resets/new"
+
   resources :users do
     member do
       get :following, :followers, :jobss
@@ -21,6 +23,7 @@ KIT::Application.routes.draw do
   match '/signup', to: 'users#new'
   match '/signin',  to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete
+
   
 
   # The priority is based upon order of creation:

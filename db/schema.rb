@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130504091042) do
+ActiveRecord::Schema.define(:version => 20130506152144) do
 
   create_table "branches", :force => true do |t|
     t.string   "namebranch"
@@ -79,6 +79,7 @@ ActiveRecord::Schema.define(:version => 20130504091042) do
     t.string   "chair"
     t.string   "branch"
     t.integer  "year_off"
+    t.string   "auth_token"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
