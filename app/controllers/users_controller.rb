@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_filter :signed_in_user, 
-                only: [:index, :edit, :update, :destroy, :following, :followers, :addjob, :toadmin]
+                only: [:index, :edit, :update, :destroy, :following, :followers, :addjob, :toadmin, :index]
   before_filter :correct_user,   only: [:edit, :update]
   before_filter :admin_user,     only: [:destroy, :toadmin]
 
@@ -38,8 +38,96 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.paginate(page: params[:page])
+    @str = ""
+    i = 0
+    name = params[:name]
+    family_name = params[:family_name]
+    patronymic = params[:patronymic]
+    faculty = params[:faculty]
+    chair = params[:chair]
+    branch = params[:branch]
+    year_off = params[:year_off]
+
+    if !(params[:name].nil? | params[:name].blank?)      
+      if i == 0
+        @str += "name = \"" + name +"\""
+        i+=1
+      else
+        @str += " AND name = \"" + name +"\""
+        i++1
+      end     
+    end
+
+    if !(params[:family_name].nil? | params[:family_name].blank?)
+      if i == 0
+        @str += "family_name = \"" + family_name +"\""
+        i+=1
+      else
+        @str += " AND family_name = \"" + family_name +"\""
+        i++1
+      end     
+    end
+
+    if !(params[:patronymic].nil? | params[:patronymic].blank?)
+      if i == 0
+        @str += "patronymic = \"" + patronymic +"\""
+        i+=1
+      else
+        @str += " AND patronymic = \"" + patronymic +"\""
+        i++1
+      end     
+    end
+
+    if !(params[:faculty].nil? | params[:faculty].blank?)
+      if i == 0
+        @str += "faculty = \"" + faculty +"\""
+        i+=1
+      else
+        @str += " AND faculty = \"" + faculty +"\""
+        i++1
+      end     
+    end
+
+    if !(params[:chair].nil? | params[:chair].blank?)
+      if i == 0
+        @str += "chair = \"" + chair +"\""
+        i+=1
+      else
+        @str += " AND chair = \"" + chair +"\""
+        i++1
+      end     
+    end
+
+    if !(params[:branch].nil? | params[:branch].blank?)
+      if i == 0
+        @str += "branch = \"" + branch +"\""
+        i+=1
+      else
+        @str += " AND branch = \"" + branch +"\""
+        i++1
+      end     
+    end
+
+    if !(params[:year_off].nil? | params[:year_off].blank?)
+      if i == 0
+        @str += "year_off = \"" + year_off +"\""
+        i+=1
+      else
+        @str += " AND year_off = \"" + year_off +"\""
+        i++1
+      end     
+    end
+
+
+    if @str == ""
+      @users = User.all
+    else
+      @query = "SELECT * FROM users  WHERE "  + @str
+      @users = User.find_by_sql(@query)
+    end
   end
+
+
 
   def update
     @branch = Branch.find_by_namebranch(params[:user][:branch])

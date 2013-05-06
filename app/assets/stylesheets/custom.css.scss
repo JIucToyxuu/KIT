@@ -56,6 +56,11 @@ h2 {
 p {
   font-size: 1.1em;
   line-height: 1.7em;
+
+  form-inline {
+    display:inline;
+    padding: 0px;
+  }
 }
 
 
@@ -187,11 +192,14 @@ input, textarea, select, .uneditable-input {
   padding: 10px;
   margin-bottom: 15px;
   @include box_sizing;
+  formline {
+    display: inline-block;
+  }
 }
 
 input {
   height: auto !important;
-}
+  }
 
 select {
   height: auto !important;
@@ -253,3 +261,4 @@ aside {
     margin-bottom: 5px;
   }
 }
+

@@ -1,3 +1,4 @@
+# coding: utf-8
 # == Schema Information
 #
 # Table name: users
@@ -17,6 +18,7 @@
 #  branch          :string(255)
 #  year_off        :integer
 #
+# coding: utf-8
 
 class User < ActiveRecord::Base
   attr_accessible :email, :name, :password, :password_confirmation, 
@@ -65,6 +67,8 @@ class User < ActiveRecord::Base
   def unfollow!(other_user)
     relationships.find_by_followed_id(other_user.id).destroy
   end
+
+  
 
 
 
