@@ -12,9 +12,9 @@ def make_users
                        password_confirmation: "123456",
                        family_name: "_",
                        patronymic: "_",
-                       faculty: "nill",
-                       chair: "nill",
-                       branch: "nill",
+                       faculty: "admin",
+                       chair: "admin",
+                       branch: "admin",
                        year_off: 2013)
   admin.toggle!(:admin)
 end
