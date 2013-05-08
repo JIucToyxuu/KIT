@@ -50,70 +50,70 @@ class UsersController < ApplicationController
 
     if !(params[:name].nil? | params[:name].blank?)      
       if i == 0
-        @str += "name = \"" + name +"\""
+        @str += "name = \'" + name +"\'"
         i+=1
       else
-        @str += " AND name = \"" + name +"\""
+        @str += " AND name = \'" + name +"\'"
         i++1
       end     
     end
 
     if !(params[:family_name].nil? | params[:family_name].blank?)
       if i == 0
-        @str += "family_name = \"" + family_name +"\""
+        @str += "family_name = \'" + family_name +"\'"
         i+=1
       else
-        @str += " AND family_name = \"" + family_name +"\""
+        @str += " AND family_name = \'" + family_name +"\'"
         i++1
       end     
     end
 
     if !(params[:patronymic].nil? | params[:patronymic].blank?)
       if i == 0
-        @str += "patronymic = \"" + patronymic +"\""
+        @str += "patronymic = \'" + patronymic +"\'"
         i+=1
       else
-        @str += " AND patronymic = \"" + patronymic +"\""
+        @str += " AND patronymic = \'" + patronymic +"\'"
         i++1
       end     
     end
 
     if !(params[:faculty].nil? | params[:faculty].blank?)
       if i == 0
-        @str += "faculty = \"" + faculty +"\""
+        @str += "faculty = \'" + faculty +"\'"
         i+=1
       else
-        @str += " AND faculty = \"" + faculty +"\""
+        @str += " AND faculty = \'" + faculty +"\'"
         i++1
       end     
     end
 
     if !(params[:chair].nil? | params[:chair].blank?)
       if i == 0
-        @str += "chair = \"" + chair +"\""
+        @str += "chair = \'" + chair +"\'"
         i+=1
       else
-        @str += " AND chair = \"" + chair +"\""
+        @str += " AND chair = \'" + chair +"\'"
         i++1
       end     
     end
 
     if !(params[:branch].nil? | params[:branch].blank?)
       if i == 0
-        @str += "branch = \"" + branch +"\""
+        @str += "branch = \'" + branch +"\'"
         i+=1
       else
-        @str += " AND branch = \"" + branch +"\""
+        @str += " AND branch = \'" + branch +"\'"
         i++1
       end     
     end
 
     if !(params[:year_off].nil? | params[:year_off].blank?)
       if i == 0
-        @str += "year_off = \"" + year_off +"\""
+        @str += "year_off = \'" + year_off +"\'"
         i+=1
       else
-        @str += " AND year_off = \"" + year_off +"\""
+        @str += " AND year_off = \'" + year_off +"\'"
         i++1
       end     
     end
