@@ -22,7 +22,7 @@
 
 class User < ActiveRecord::Base
   attr_accessible :email, :name, :password, :password_confirmation, 
-          :family_name, :patronymic, :faculty, :chair, :branch, :year_off
+          :family_name, :patronymic, :faculty, :chair, :branch, :year_off, :admin
   has_secure_password
 
   has_many :microposts, dependent: :destroy

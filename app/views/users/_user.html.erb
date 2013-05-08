@@ -1,9 +1,9 @@
 <li>
   <%= gravatar_for user, size: 52 %>
   <%= link_to user.family_name + " " + user.name + " " + user.patronymic, user %>
-  <% if current_user.admin? && !current_user?(user) %>
+  <% if current_user.admin? %>
     <% if user.admin == false %>
-  	| <%= link_to "Сделать администратором", user , :action => "toadmin",
+  	| <%= link_to "Сделать администратором", toadmin_user_path(user),   method: :put,
                                   data: { confirm: "You sure?" } %>
     <% end %>
     | <%= link_to "Удалить", user, method: :delete, :job => :destroy, data: { confirm: "You sure?" } %>

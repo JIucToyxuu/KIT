@@ -172,6 +172,12 @@ class UsersController < ApplicationController
     redirect_to jobss_user_path(current_user)
   end
 
+  def toadmin
+      @user = User.find_by_id(params[:id])
+      @user.toggle!(:admin)
+      redirect_to users_path
+    end
+
 
 
    
@@ -187,16 +193,8 @@ class UsersController < ApplicationController
       redirect_to(root_path) unless current_user.admin?
     end
 
-    def toadmin
-      @user = User.find_by_id(params[:user][:id])
-      @user.toggle!(:admin)
-      if @user.update_attributes(params[:user])
-      flash[:success] = "Profile updated"
-      redirect_to users_path
-    else
-      render 'index'
-    end
-    end
+
+
 
    
 end
