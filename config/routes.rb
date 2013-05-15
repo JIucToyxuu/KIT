@@ -14,6 +14,12 @@ KIT::Application.routes.draw do
   resources :faculties, only: [:create, :destroy, :new]
   resources :chairs, only: [:create, :destroy, :new]
   resources :branches, only: [:create, :destroy, :new]
+  resources :comments do
+    member do
+      delete :destroy
+    end
+  end
+
 
   root to: "static_pages#home"	
   match '/help', to: 'static_pages#help'
@@ -22,7 +28,6 @@ KIT::Application.routes.draw do
   match '/signup', to: 'users#new'
   match '/signin',  to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete
-
   
 
   # The priority is based upon order of creation:

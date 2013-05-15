@@ -11,6 +11,7 @@
 
 class Micropost < ActiveRecord::Base
   attr_accessible :content
+  has_many :comments, foreign_key: "id_message", dependent: :destroy
   
   belongs_to :user
 

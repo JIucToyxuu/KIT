@@ -8,5 +8,5 @@
   <%= link_to "профиль", current_user %>
 </span>
 <span>
-  <%= pluralize(current_user.microposts.count, "Сообщения") %>
+  <%=  current_user.microposts.count %> Сообщения
 </span>

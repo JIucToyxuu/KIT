@@ -34,6 +34,10 @@ class UsersController < ApplicationController
     @microposts = @user.microposts.paginate(page: params[:page])
   end
 
+  def show_comment    
+    @comments = Comment.where(id_message: params[:message])
+  end
+
   def edit    
   end
 

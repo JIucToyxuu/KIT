@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130506152144) do
+ActiveRecord::Schema.define(:version => 20130515074734) do
 
   create_table "branches", :force => true do |t|
     t.string   "namebranch"
@@ -25,6 +25,14 @@ ActiveRecord::Schema.define(:version => 20130506152144) do
     t.integer  "faculty_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "comments", :force => true do |t|
+    t.integer  "id_message"
+    t.integer  "id_user"
+    t.string   "text_of_comment"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   create_table "faculties", :force => true do |t|
@@ -79,6 +87,7 @@ ActiveRecord::Schema.define(:version => 20130506152144) do
     t.string   "chair"
     t.string   "branch"
     t.integer  "year_off"
+    t.string   "auth_token"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

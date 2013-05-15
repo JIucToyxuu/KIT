@@ -1,11 +1,26 @@
 <li>
-  <span class="content"><%= micropost.content %></span>
-  <span class="timestamp">
-    Posted <%= time_ago_in_words(micropost.created_at) %> ago.
-  </span>
-  <% if current_user?(micropost.user) %>
-    <%= link_to "delete", micropost, method: :delete,
-                                     data: { confirm: "You sure?" },
+	<% params[:message] = micropost.id %>
+ 	<span class="content" >
+ 		<%= micropost.content %>
+  	</span>
+  	<span class="timestamp">
+    	Posted <%= time_ago_in_words(micropost.created_at) %> ago.
+  	</span>
+	<span style="padding: 0px 10px 0px 0px">
+  		<%= link_to "Комментировать", "#" %>
+	</span>
+  	<% if current_user?(micropost.user) %>
+    	<%= link_to "Удалить", micropost, method: :delete,
+                                     data: { confirm: "Вы уверенны?" },
                                      title: micropost.content %>
-  <% end %>
+  	<% end %>
+	<% @comments = Comment.where(id_message: micropost.id) %>
+	<ol style="padding: 10px 0px 0px 0px">
+    	<% @comments.each do |f| %>
+
+    	<pre style="padding: 10px 0px 0px 10px">  <%= link_to gravatar_for(User.find(f.id_user), options = { size: 30 }), User.find(f.id_user) %><%= f.text_of_comment%>  <% if current_user?(User.find(f.id_user)) %><%= link_to "Удалить", f , method: :delete, data: { confirm: "Вы уверенны?" }, title: f.text_of_comment %><% end %>
+  </pre>
+    	<% end %>
+      <%= render 'shared/micropost_form' %>
+	</ol>
 </li>

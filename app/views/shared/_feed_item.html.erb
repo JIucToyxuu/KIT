@@ -1,15 +1,31 @@
 <li id="<%= feed_item.id %>">
   <%= link_to gravatar_for(feed_item.user), feed_item.user %>
     <span class="user">
-      <%= link_to feed_item.user.name, feed_item.user %>
+      <%= feed_item.user.family_name + " " + feed_item.user.name %>
     </span>
     <span class="content"><%= feed_item.content %></span>
     <span class="timestamp">
       Posted <%= time_ago_in_words(feed_item.created_at) %> ago.
     </span>
-  <% if current_user?(feed_item.user) %>
-    <%= link_to "delete", feed_item, method: :delete,
-                                     data: { confirm: "You sure?" },
+
+
+    <span style="padding: 0px 10px 0px 0px">
+      <%= link_to "Комментировать", "#" %>
+  </span>
+    <% if current_user?(feed_item.user) %>
+      <%= link_to "Удалить", feed_item, method: :delete,
+                                     data: { confirm: "Вы уверенны?" },
                                      title: feed_item.content %>
-  <% end %>
+    <% end %>
+  <% @comments = Comment.where(id_message: feed_item.id) %>
+  <ol style="padding: 10px 0px 0px 0px">
+      <% @comments.each do |f| %>
+
+      <pre style="padding: 10px 0px 0px 10px">  <%= link_to gravatar_for(User.find(f.id_user), options = { size: 30 }), User.find(f.id_user) %><%= f.text_of_comment%>  <% if current_user?(User.find(f.id_user)) %><%= link_to "Удалить", f , method: :delete, data: { confirm: "Вы уверенны?" }, title: f.text_of_comment %><% end %>
+  </pre>
+      <% end %>
+  </ol>
+
+
+
 </li>

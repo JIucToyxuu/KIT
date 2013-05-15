@@ -33,6 +33,7 @@ class User < ActiveRecord::Base
                                    dependent:   :destroy
   has_many :followers, through: :reverse_relationships, source: :follower
   has_many :jobs, foreign_key: "user_id", dependent: :destroy
+  has_many :comments, foreign_key: "id_user", dependent: :destroy
 
 
   before_save { |user| user.email = email.downcase }
