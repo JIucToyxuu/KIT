@@ -8,10 +8,6 @@
       Posted <%= time_ago_in_words(feed_item.created_at) %> ago.
     </span>
 
-
-    <span style="padding: 0px 10px 0px 0px">
-      <%= link_to "Комментировать", "#" %>
-  </span>
     <% if current_user?(feed_item.user) %>
       <%= link_to "Удалить", feed_item, method: :delete,
                                      data: { confirm: "Вы уверенны?" },
@@ -25,7 +21,19 @@
   </pre>
       <% end %>
   </ol>
+  <ol style="background-color: LightBlue">
+    <% @id_message = feed_item.id %>
+    <%= form_for(@comment) do |f| %>
+    <div class="field">
+    <%= f.hidden_field :id_message, :value =>feed_item.id %>
+    <%= f.text_area :text_of_comment, :size => '0', placeholder: "Добавить комментарий..." %>
+    
+    </div>
+    <%= f.submit "Отправить", class: "btn btn-small disabled" %>
+    <% end %> 
 
+
+  </ol>
 
 
 </li>

@@ -7,15 +7,12 @@
 	      <%= @user.family_name %>
         <%= @user.name %> <br />
         <%= @user.patronymic %>
-      </h1>
-    </section>
-    <section>
+      </h1><br/>
+    
       <pre><br />      Факультет:      <red><%= @user.faculty %></red><br />
       Кафедра:        <red><%= @user.chair %></red><br />
       Специальность:  <red><%= @user.branch %></red><br />
       Год выпуска:    <red><%= @user.year_off %></red></pre>
-    </section>
-    <section>
 	<%= link_to "Места работы", about_path,
                                 class: "btn btn-info" %>
     </section>	
@@ -23,7 +20,7 @@
   <div class="span8">
     <%= render 'follow_form' if signed_in? %>
     <% if @user.microposts.any? %>
-      <h3>Мои сообщения (<%= @user.microposts.count %>)</h3>
+      <h3 style="padding: 0px 0px 13px 0px">Мои сообщения (<%= @user.microposts.count %>)</h3>
       <ol class="microposts">
         <%= render @microposts %>
       </ol>

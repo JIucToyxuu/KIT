@@ -8,6 +8,7 @@ html {
 }
 
 body {
+  background-color: SkyBlue;
   padding-top: 60px;
   red {
     color: darkseagreen;
@@ -15,12 +16,16 @@ body {
   }
 }
 
+pre {
+  background-color: LightBlue;
+}
 section {
   overflow: auto;
 }
 
 textarea {
   resize: vertical;
+  background-color: PaleTurquoise;
 }
 
 .center {
