@@ -22,7 +22,7 @@ class UsersController < ApplicationController
     if @user.save
       sign_in @user
       flash[:success] = "Welcome to the KIT!"
-      ActionMailer::Base.mail(:from => "odmin.srstu.2013@yandex.ru",:to => "odmin.srstu.2013@yandex.ru", :subject => "test", :body => "test").deliver
+      UserMailer.registration_confirmation(@user).deliver
       redirect_to @user
     else
       render 'new'
