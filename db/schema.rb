@@ -87,7 +87,6 @@ ActiveRecord::Schema.define(:version => 20130515074734) do
     t.string   "chair"
     t.string   "branch"
     t.integer  "year_off"
-    t.string   "auth_token"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
