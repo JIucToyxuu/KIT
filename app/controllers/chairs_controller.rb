@@ -5,8 +5,8 @@ class ChairsController < ApplicationController
 
   def new
     if current_user.admin?
-        @chair_items = Chair.paginate(page: params[:page])
-        @chair = Chair.new
+      @chair_items = Chair.paginate(page: params[:page])
+      @chair = Chair.new
     else
       redirect_to root_path
     end
@@ -32,6 +32,6 @@ class ChairsController < ApplicationController
   private
 
   def admin_user
-      redirect_to(root_path) unless current_user.admin?
+    redirect_to(root_path) unless current_user.admin?
   end
 end

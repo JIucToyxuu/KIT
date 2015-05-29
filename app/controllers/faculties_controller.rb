@@ -4,8 +4,8 @@ class FacultiesController < ApplicationController
 
   def new
     if current_user.admin?
-        @faculty_items = Faculty.paginate(page: params[:page])
-        @faculty = Faculty.new
+      @faculty_items = Faculty.paginate(page: params[:page])
+      @faculty = Faculty.new
     else
       redirect_to root_path
     end
@@ -30,6 +30,6 @@ class FacultiesController < ApplicationController
   private
 
   def admin_user
-      redirect_to(root_path) unless current_user.admin?
+    redirect_to(root_path) unless current_user.admin?
   end
 end

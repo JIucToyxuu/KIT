@@ -1,14 +1,14 @@
 class BranchesController < ApplicationController
   before_filter :signed_in_user, only: [:create, :destroy, :new]
   before_filter :admin_user,     only: [:create, :destroy, :new]
-  
+
   def index
   end
 
   def new
-  	if current_user.admin?
-        @branch_items = Branch.paginate(page: params[:page])
-        @branch = Branch.new
+    if current_user.admin?
+      @branch_items = Branch.paginate(page: params[:page])
+      @branch = Branch.new
     else
       redirect_to root_path
     end
@@ -33,6 +33,6 @@ class BranchesController < ApplicationController
   private
 
   def admin_user
-      redirect_to(root_path) unless current_user.admin?
+    redirect_to(root_path) unless current_user.admin?
   end
 end

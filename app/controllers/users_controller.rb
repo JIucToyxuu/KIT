@@ -1,11 +1,10 @@
 class UsersController < ApplicationController
-  before_filter :signed_in_user, 
-                only: [:index, :edit, :update, :destroy, :following, :followers, :addjob, :toadmin, :index]
+  before_filter :signed_in_user, only: [:index, :edit, :update, :destroy, :following, :followers, :addjob, :toadmin, :index]
   before_filter :correct_user,   only: [:edit, :update]
   before_filter :admin_user,     only: [:destroy, :toadmin]
 
   def new
-  	@user = User.new
+    @user = User.new
   end
 
   def destroy
@@ -30,15 +29,15 @@ class UsersController < ApplicationController
 
   def show
     session[:domain_id] = params[:id]
-  	@user = User.find(params[:id])
+    @user = User.find(params[:id])
     @microposts = @user.microposts.paginate(page: params[:page])
   end
 
-  def show_comment    
+  def show_comment
     @comments = Comment.where(id_message: params[:message])
   end
 
-  def edit    
+  def edit
   end
 
   def index
@@ -52,14 +51,14 @@ class UsersController < ApplicationController
     branch = params[:branch]
     year_off = params[:year_off]
 
-    if !(params[:name].nil? | params[:name].blank?)      
+    if !(params[:name].nil? | params[:name].blank?)
       if i == 0
         @str += "name = \'" + name +"\'"
         i+=1
       else
         @str += " AND name = \'" + name +"\'"
         i++1
-      end     
+      end
     end
 
     if !(params[:family_name].nil? | params[:family_name].blank?)
@@ -69,7 +68,7 @@ class UsersController < ApplicationController
       else
         @str += " AND family_name = \'" + family_name +"\'"
         i++1
-      end     
+      end
     end
 
     if !(params[:patronymic].nil? | params[:patronymic].blank?)
@@ -79,7 +78,7 @@ class UsersController < ApplicationController
       else
         @str += " AND patronymic = \'" + patronymic +"\'"
         i++1
-      end     
+      end
     end
 
     if !(params[:faculty].nil? | params[:faculty].blank?)
@@ -89,7 +88,7 @@ class UsersController < ApplicationController
       else
         @str += " AND faculty = \'" + faculty +"\'"
         i++1
-      end     
+      end
     end
 
     if !(params[:chair].nil? | params[:chair].blank?)
@@ -99,7 +98,7 @@ class UsersController < ApplicationController
       else
         @str += " AND chair = \'" + chair +"\'"
         i++1
-      end     
+      end
     end
 
     if !(params[:branch].nil? | params[:branch].blank?)
@@ -109,7 +108,7 @@ class UsersController < ApplicationController
       else
         @str += " AND branch = \'" + branch +"\'"
         i++1
-      end     
+      end
     end
 
     if !(params[:year_off].nil? | params[:year_off].blank?)
@@ -119,7 +118,7 @@ class UsersController < ApplicationController
       else
         @str += " AND year_off = \'" + year_off +"\'"
         i++1
-      end     
+      end
     end
 
 
@@ -160,8 +159,8 @@ class UsersController < ApplicationController
     render 'show_follow'
   end
 
-  def jobss     
-    @user = User.find(params[:id])   
+  def jobss
+    @user = User.find(params[:id])
     @jobs = @user.jobs.paginate(page: params[:page])
     if signed_in?
       @job =current_user.jobs.build
@@ -182,23 +181,14 @@ class UsersController < ApplicationController
       redirect_to users_path
     end
 
-
-
-   
-
   private
 
-    def correct_user
-      @user = User.find(params[:id])
-      redirect_to(root_path) unless current_user?(@user)
-    end
+  def correct_user
+    @user = User.find(params[:id])
+    redirect_to(root_path) unless current_user?(@user)
+  end
 
-    def admin_user
-      redirect_to(root_path) unless current_user.admin?
-    end
-
-
-
-
-   
+  def admin_user
+    redirect_to(root_path) unless current_user.admin?
+  end
 end
