@@ -4,7 +4,7 @@ class ChairsController < ApplicationController
 
 
   def new
-  	if current_user.admin?
+    if current_user.admin?
         @chair_items = Chair.paginate(page: params[:page])
         @chair = Chair.new
     else
@@ -13,8 +13,8 @@ class ChairsController < ApplicationController
   end
 
   def create
-  	@chair_items = Chair.paginate(page: params[:page])
-  	@chair = Chair.new(params[:chair])
+    @chair_items = Chair.paginate(page: params[:page])
+    @chair = Chair.new(params[:chair])
     if @chair.save
       redirect_to new_chair_path
     else
@@ -22,7 +22,7 @@ class ChairsController < ApplicationController
     end
   end
 
-  def destroy  	
+  def destroy   
     Chair.find_by_id(params[:id]).destroy
     flash[:success] = "Chair destroyed."
     redirect_to new_chair_path
