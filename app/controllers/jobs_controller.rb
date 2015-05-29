@@ -14,7 +14,7 @@ class JobsController < ApplicationController
     @job.active = false;
     @job.update_attributes(params[:user])
     flash[:success] = "Profile updated"
-    redirect_to jobss_user_path(current_user)    
+    redirect_to jobss_user_path(current_user)
   end
 
   def destroy
@@ -25,7 +25,7 @@ class JobsController < ApplicationController
   end
 
   def create
-    @job = current_user.jobs.build(params[:job])    
+    @job = current_user.jobs.build(params[:job])
       @job.active = true
     if @job.save
       flash[:success] = "Job create!"
